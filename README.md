@@ -2,6 +2,13 @@
 
 **A community-built monster-keeping RPG in the spirit of the Game Boy Color era — shipped as a single HTML file.**
 
+▶ **[Play it now — meliwat.github.io/faunwild](https://meliwat.github.io/faunwild/)** — no install, works on phones too.
+
+[![CI](https://github.com/Meliwat/faunwild/actions/workflows/ci.yml/badge.svg)](https://github.com/Meliwat/faunwild/actions/workflows/ci.yml)
+[![Deploy](https://github.com/Meliwat/faunwild/actions/workflows/pages.yml/badge.svg)](https://github.com/Meliwat/faunwild/actions/workflows/pages.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Zero dependencies](https://img.shields.io/badge/dependencies-0-blue.svg)](package.json)
+
 Explore the Solvane region, snare wild Kin, outsmart two gym leaders, chase a
 night-walking legend, and stop the Gloam Syndicate. Everything — 30 original
 creatures, pixel art, maps, chiptune music, the lot — is generated from code.
@@ -13,10 +20,12 @@ it.** New Kin, new routes, new mechanics — all welcome via pull request.
 
 ## Play it
 
-- **Online:** enable GitHub Pages for this repo (Settings → Pages → Source:
-  *GitHub Actions*) and the included workflow publishes every push to `main`
-  at `https://<your-user>.github.io/<repo>/`.
+- **Online:** **[meliwat.github.io/faunwild](https://meliwat.github.io/faunwild/)** —
+  the included workflow rebuilds and publishes every push to `main`. (Forks: enable
+  Pages under Settings → Pages → Source: *GitHub Actions* and it deploys itself.)
 - **Locally:** `node build.js`, then open `dist/faunwild.html` in any browser.
+- **Offline / share it:** grab `dist/faunwild.html` — the whole game is that one
+  file. Email it, drop it on a USB stick, host it anywhere.
 
 ### Controls
 
