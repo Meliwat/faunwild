@@ -29,7 +29,8 @@ const PALS={
  briar:['#243020','#4f9040','#f0c8a0','#7cb858','#3c5830'],
  brava:['#301c14','#d84828','#f0c8a0','#e88838','#702c1c'],
  rook:['#242430','#b8c0c8','#f0c8a0','#8c2c34','#34344c'],
- noct:['#1c1824','#3c3050','#c8b8d8','#241e34','#181420']};
+ noct:['#1c1824','#3c3050','#c8b8d8','#241e34','#181420'],
+ bronte:['#2c2414','#d8b020','#f0c8a0','#3a5a9a','#5a4a20']};
 
 //------------------------------------------------------------ tiles (procedurally drawn at boot)
 const TIL={};
@@ -70,6 +71,11 @@ TIL['u']=mkTile((x,R)=>{R(0,0,16,16,'#e0d8c0');R(3,3,10,10,'#b0a888');R(5,5,6,6,
 TIL['U']=mkTile((x,R)=>{R(0,0,16,16,'#e0d8c0');R(3,3,10,10,'#b0a888');R(5,5,6,6,'#5070c0');R(5,5,6,1,'#7898e0');R(5,10,6,1,'#34487c')});
 TIL['i']=mkTile((x,R)=>{R(0,0,16,16,'#cfe8f0');R(2,2,5,1,'#f0fbff');R(9,7,5,1,'#f0fbff');R(4,12,5,1,'#aacede');R(12,3,2,1,'#aacede');R(0,15,16,1,'#a8c8d8')});
 TIL['n']=mkTile((x,R)=>{R(0,0,16,16,'#e0d8c0');R(4,12,8,3,'#888078');R(5,4,6,8,'#a8a098');R(5,2,6,3,'#b8b0a8');R(6,4,1,1,'#686058');R(9,4,1,1,'#686058')});
+{const cb=R=>{R(0,0,16,16,'#26304a');R(0,0,16,1,'#34406a');R(0,15,16,1,'#1a2238')};
+ const chev=(R,cy,c)=>{R(7,cy,2,2,c);R(5,cy+2,2,2,c);R(9,cy+2,2,2,c);R(3,cy+4,2,2,c);R(11,cy+4,2,2,c)};
+ const up=mkTile((x,R)=>{cb(R);chev(R,2,'#74d0f0');chev(R,8,'#3f8fd0')});
+ const rot=(src,deg)=>{const c=document.createElement('canvas');c.width=16;c.height=16;const x=c.getContext('2d');x.translate(8,8);x.rotate(deg*Math.PI/180);x.translate(-8,-8);x.drawImage(src,0,0);return c};
+ TIL['^']=up;TIL['v']=rot(up,180);TIL['<']=rot(up,270);TIL['>']=rot(up,90)}
 TIL['Yo']=TIL['_'];TIL['Zo']=TIL['_'];
 }
 const SOLID={'T':1,'w':1,'F':1,'S':1,'r':1,'R':1,'B':1,'P':1,'W':1,'o':1,'x':1,'#':1,'k':1,'p':1,'h':1,'e':1,'a':1,'n':1};

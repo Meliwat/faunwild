@@ -75,6 +75,20 @@ console.log('  results:',JSON.stringify(res));
 check('trainer battles complete',errs===0,errs+' errors');
 check('trainer battles winnable',(res.win||0)>0);
 check('prize money paid',F.G.money!==1500||true);
+//---- 5b. gym3 leader BRONTE (VOLT) winnable with a STONE-leaning team
+console.log('== gym3 leader sim ==');
+errs=0;let g3win=0;
+for(let i=0;i<20;i++){
+ F.newGame('TEST');F.INGAME=true;
+ F.G.party=[F.makeMon(18,26,{fr:90}),F.makeMon(17,24,{}),F.makeMon(8,24,{})];
+ const r=F.simBattle({tr:{name:'LEADER BRONTE',team:[[15,18],[16,20],[31,23]],m:2000,f:'tg3'}});
+ if((''+r).startsWith('ERR')||r==='TIMEOUT')errs++;
+ if(r==='win')g3win++;
+}
+console.log('  results: '+g3win+'/20 wins');
+check('gym3 leader battles complete',errs===0,errs+' errors');
+check('gym3 leader winnable',g3win>0,g3win+'/20 wins');
+check('ARCLEON exists (Kin 31)',!!F.SP[31]&&F.SP[31].n==='ARCLEON');
 //---- 6. catching
 console.log('== catch sims ==');
 errs=0;res={};
@@ -180,6 +194,11 @@ try{
  F.warpTo('gym2',8,11,'u');
  press('u');frames(60);
  check('ice slide stops at rock',F.G.x===8&&F.G.y===10,'at '+F.G.x+','+F.G.y);
+ // gym3 current floor: step onto the pipe base and get swept up to the leader
+ F.warpTo('gym3',3,9,'u');
+ press('u');frames(160);
+ check('gym3 current sweeps to leader',F.G.x===6&&F.G.y===2,'at '+F.G.x+','+F.G.y);
+ drain();
  // wander grass until an encounter fires, finish the battle via UI mashing
  F.warpTo('route1',2,11,'d');
  let sawBattle=false;

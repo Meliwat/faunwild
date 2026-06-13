@@ -9,6 +9,7 @@ function setKey(k,down){if(down){if(!KEYS[k])KEYP[k]=1;KEYS[k]=1}else{KEYS[k]=0}
 function kp(k){if(KEYP[k]){KEYP[k]=0;return 1}return 0}
 const DV={u:[0,-1],d:[0,1],l:[-1,0],r:[1,0]};
 const OPP={u:'d',d:'u',l:'r',r:'l'};
+const CURDIR={'^':'u','v':'d','<':'l','>':'r'}; // electric "current" floor tiles: drift this way
 
 function newGame(name){G={v:1,name:(name||'RIN').toUpperCase().slice(0,7),map:'home',x:4,y:4,dir:'d',
  party:[],vault:[],bag:{},money:1500,flags:{},badges:[],

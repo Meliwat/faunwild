@@ -10,6 +10,7 @@ function heldDmg(att,def,mv,base,phys){
  if(att.item==='cinderfang'&&mv.t==='EMBER')base=fl(base*1.2);
  if(att.item==='tidepearl'&&mv.t==='TIDE')base=fl(base*1.2);
  if(att.item==='leafcrest'&&mv.t==='FLORA')base=fl(base*1.2);
+ if(att.item==='stormcell'&&mv.t==='VOLT')base=fl(base*1.2);
  return base}
 function calcDmg(att,def,aS,dS,mv,crit){const phys=!!PHYS[mv.t];
  let A=stat(att,phys?'at':'sc'),D=stat(def,phys?'df':'sc');
@@ -94,7 +95,7 @@ function BattleMode(t,cb){const B=mkBattle(t);
  return B}
 function bAnim(B,f,d){return {k:'anim',f,d}}
 function* battleFlow(B){
- yield {k:'song',n:'battle'};
+ yield {k:'song',n:(MAPS[G.map]&&MAPS[G.map].mus==='gym')?'gymbattle':'battle'};
  yield bAnim(B,30,f=>{if(f<14){ctx.fillStyle=f%4<2?'#080810':'#e8e8d8';ctx.fillRect(0,0,W,H)}
   else{const h2=fl((H/2)*(1-(f-14)/16));ctx.fillStyle='#080810';if(h2>0){ctx.fillRect(0,0,W,h2);ctx.fillRect(0,H-h2,W,h2)}}});
  if(B.kind==='wild'){addSeen(B.e.id);

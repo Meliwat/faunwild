@@ -9,8 +9,8 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Zero dependencies](https://img.shields.io/badge/dependencies-0-blue.svg)](package.json)
 
-Explore the Solvane region, snare wild Kin, outsmart two gym leaders, chase a
-night-walking legend, and stop the Gloam Syndicate. Everything — 30 original
+Explore the Solvane region, snare wild Kin, outsmart three gym leaders, chase a
+night-walking legend, and stop the Gloam Syndicate. Everything — 31 original
 creatures, pixel art, maps, chiptune music, the lot — is generated from code.
 No assets. No dependencies. No engine. Just one `.html` file you can open
 anywhere, and a codebase anyone can read top to bottom.
@@ -41,7 +41,7 @@ string you can paste on any device.
 
 ## What's in the game
 
-- 30 original Kin with hand-placed pixel sprites, a 12-type chart featuring two
+- 31 original Kin with hand-placed pixel sprites, a 12-type chart featuring two
   "newly discovered" types (**ALLOY** and **UMBRAL**), 49 moves, held items
 - Classic battle math: STAB, crits, stat stages, burn/poison/paralysis/sleep,
   PP, switching, fleeing, and an AI that hunts for super-effective hits
@@ -50,8 +50,8 @@ string you can paste on any device.
   time-based encounters, a night-only vendor, and a morning gift
 - Friendship and item evolutions, a 1/64 **gleaming** rarity, and **NOCTELK** —
   a roaming legendary that only walks the three roads at night and flees mid-battle
-- Two towns, three routes, a cave story event, and two gyms with puzzles
-  (switch-gated hedges; an ice-slide floor)
+- Three towns, four routes, a cave story event, and three gyms with puzzles
+  (switch-gated hedges; an ice-slide floor; current-swept gym floors)
 - Saving via localStorage **and** exportable save codes
 
 ## Hacking on it
@@ -94,8 +94,8 @@ map schema, sprite format).
 
 ### Wanted: ideas the game is begging for
 
-- **The AURELIA region** — the sealed gate north of Cindervale is the canonical
-  hook for a community-built second region (new maps, gyms, Kin 31+)
+- **The AURELIA region** — the sealed gate north of Stormreach is the canonical
+  hook for a community-built second region (new maps, gyms, Kin 32+)
 - The classic stretch features: **daycare/breeding**, **fishing**, **phone
   rematches**
 - More Kin (the Kindex auto-grows), more moves, more held items

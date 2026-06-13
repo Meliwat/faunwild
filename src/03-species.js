@@ -150,7 +150,12 @@ const SP=[null,
  mv:[[1,'nightreaver'],[1,'mindjab'],[1,'dazzleglare'],[1,'gloamveil']],
  dex:'A legend that walks the night between the three roads.',
  pal:['#0c0814','#241c34','#443860','#78e8d8'],
- px:'4..1..1.|.4.1..1.|44111.1.|.4411114|..412214|...12244|..122214|.1222441|12212221|12222221|12222223|.1222221|.1222221|..122221|..12..12|..11..11'}
+ px:'4..1..1.|.4.1..1.|44111.1.|.4411114|..412214|...12244|..122214|.1222441|12212221|12222221|12222223|.1222221|.1222221|..122221|..12..12|..11..11'},
+{n:'ARCLEON',t:['VOLT'],bs:{hp:72,at:78,df:66,sc:98,sp:104},cr:60,xy:166,ev:null,
+ mv:[[1,'staticjolt'],[1,'cower'],[1,'dashstrike'],[16,'voltlance'],[22,'slipstream'],[28,'numbpulse'],[34,'stormcoil']],
+ dex:'Storms trail it like hounds. Its roar reroutes the lightning.',
+ pal:['#2c2814','#e8c828','#f8f0b0','#68a0e0'],
+ px:'.....14.|..4..12.|..14.12.|...11122|..122222|.1222222|.1221222|.1222222|.1133322|.1233322|.1223222|.1222222|..122224|..12222.|..12.12.|..11.11.'}
 ];
 const STARTERS=[1,3,5];
 const RIVALPICK={1:3,3:5,5:1}; // rival takes the starter strong against yours

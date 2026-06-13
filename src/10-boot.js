@@ -44,7 +44,7 @@ function boot(){buildTiles();
  if(typeof requestAnimationFrame==='function')requestAnimationFrame(frameLoop)}
 //------------------------------------------------------------ self test
 function selfTest(){const errs=[];
- const tileChars='.gf-wTLFSrCDRBPWoxq#_kphenamdHYZuUi';
+ const tileChars='.gf-wTLFSrCDRBPWoxq#_kphenamdHYZuUi^v<>';
  for(const k in MAPS){const mp=MAPS[k],g=mp.g,w=g[0].length;
   for(let y=0;y<g.length;y++){if(g[y].length!==w)errs.push(k+' row '+y+' width '+g[y].length+' != '+w);
    for(const c of g[y])if(tileChars.indexOf(c)<0)errs.push(k+' unknown tile "'+c+'"')}
@@ -75,8 +75,8 @@ function selfTest(){const errs=[];
   for(const e of s.mv)if(!MV[e[1]])errs.push(s.n+' bad move '+e[1]);
   if(s.ev&&!SP[s.ev.to])errs.push(s.n+' bad evo target');
   if(s.ev&&s.ev.item&&!IT[s.ev.item])errs.push(s.n+' bad evo item')}
- for(const gk of ['gym1','gym2']){const mp=MAPS[gk],g=mp.g,w=g[0].length,h=g.length;
-  const pass=c=>'_YZuUdi'.indexOf(c)>=0;
+ for(const gk of ['gym1','gym2','gym3']){const mp=MAPS[gk],g=mp.g,w=g[0].length,h=g.length;
+  const pass=c=>'_YZuUdi^v<>'.indexOf(c)>=0;
   const st0=mp.warps[0],L=mp.npcs[0];
   const seen=new Set([st0.x+','+st0.y]);const q=[[st0.x,st0.y]];let ok=false;
   while(q.length){const [x,y]=q.shift();

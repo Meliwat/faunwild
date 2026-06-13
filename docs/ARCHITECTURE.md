@@ -50,7 +50,7 @@ resumes the generator with the result. Synchronous tasks resume immediately.
 ## Overworld
 
 Grid movement at 2px/frame. On arriving at a tile, `OW.arrive()` checks **in
-order**: gym switch tiles → warps → ice (`i`, keep sliding) → script triggers
+order**: gym switch tiles → warps → ice/current (`i` / `^v<>`, keep sliding) → script triggers
 → wild encounter roll (`g` grass 14%, `q` cave floor 7%) → trainer
 line-of-sight. Edges: walking off a map border with `edges:{N:{m,d}}` arrives
 on the far row of map `m` at `coord + d`. Ledges (`L`) hop only southward.
@@ -67,7 +67,7 @@ R B P roofs     W wall   o window           x cave wall    q cave floor
 #  inner wall   _ floor  k counter          p PC           h shelf
 e  bed          a table  m rug              d exit mat (warp)
 H  hedge        Y Z switch-gates            u U the switches that open them
-i  ice (slide)  n statue
+i  ice (slide)  n statue                    ^ v < > live current (drift one way)
 ```
 
 ## Time
