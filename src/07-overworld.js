@@ -23,7 +23,10 @@ startMove(vx,vy,len){this.moving=true;this.dx=vx;this.dy=vy;this.prog=0;this.len
 stepAnim(){this.prog+=2;this.animT++;
  if(this.prog>=this.len){G.x+=this.dx*(this.len/16);G.y+=this.dy*(this.len/16);
   this.moving=false;this.hop=0;this.prog=0;this.arrive()}},
-slideCont(){if(tileAt(G.x,G.y)!=='i')return false;return this.tryMove(G.dir,true)},
+slideCont(){const t=tileAt(G.x,G.y);
+ if(t==='i')return this.tryMove(G.dir,true);
+ if(CURDIR[t])return this.tryMove(CURDIR[t],true);
+ return false},
 tryEdge(d){const mp=MAPS[G.map];const e=mp.edges&&mp.edges[{u:'N',d:'S',l:'W',r:'E'}[d]];
  if(!e){if(this.bumpT<=0){sfx('bump');this.bumpT=14}return}
  const tg=MAPS[e.m],w=tg.g[0].length,h=tg.g.length;let nx,ny;
@@ -38,7 +41,7 @@ arrive(){const mp=MAPS[G.map];const t=tileAt(G.x,G.y);
   if(!G.flags[f]){G.flags[f]=1;sfx('click');runScript(function*(){yield say('CLICK! A hedge gate slid open somewhere.')});return}}
  const wp=mp.warps.find(q=>q.x===G.x&&q.y===G.y);
  if(wp){doWarp(wp);return}
- if(t==='i'){this.sliding=true;return}
+ if(t==='i'||CURDIR[t]){this.sliding=true;return}
  const tg=mp.trig.find(q=>q.x===G.x&&q.y===G.y&&(!q.not||!G.flags[q.not]));
  if(tg){runScript(SCRIPTS[tg.s]);return}
  if((t==='g'||t==='q')&&mp.enc){if(this.rollEnc())return}
@@ -75,6 +78,12 @@ d(){const mp=MAPS[G.map];const [cx,cy]=this.cam();
   let t=tileAt(tx2,ty);
   if((t==='Y'||t==='Z')&&gateOpen(t))t='_';
   const c=TIL[t]||TIL['.'];ctx.drawImage(c,tx2*16-cx,ty*16-cy)}
+ for(const lb of (mp.labels||[])){const tw=lb.t.length*6-1;
+  const sx=fl(lb.x*16+8-tw/2)-cx,sy=lb.y*16-cy+1;
+  if(sx+tw<-2||sx>W||sy<-10||sy>H)continue;
+  ctx.fillStyle='#14141c';ctx.fillRect(sx-2,sy-1,tw+4,9);
+  ctx.fillStyle='#3a3a4a';ctx.fillRect(sx-2,sy-1,tw+4,1);
+  drawText(lb.t,sx,sy,'#f8f4d8')}
  for(const it of mp.items){if(G.flags[it.f])continue;const sx=it.x*16-cx,sy=it.y*16-cy;
   if(sx<-16||sy<-16||sx>W||sy>H)continue;
   ctx.fillStyle='#30343c';ctx.fillRect(sx+4,sy+5,8,8);
@@ -200,6 +209,7 @@ nurse:function*(){const i=yield ask(['NURSE: Welcome to the HAVEN!','Shall I men
 pc:function*(){yield sfxT('conf');yield say(G.name+' booted up the KIN VAULT.');yield {k:'vault'}},
 shop1:function*(){yield* shopFlow(['snare','tonic','remedy','juneberry'])},
 shop2:function*(){yield* shopFlow(['snare','primesnare','tonic','supertonic','remedy','rekindle'])},
+shop3:function*(){yield* shopFlow(['primesnare','apexsnare','supertonic','rekindle','remedy','powerband'])},
 vendor:function*(){yield say('VENDOR: Psst. The moon market is open.','Best gear, night prices. No refunds, no questions.');
  yield* shopFlow(['apexsnare','coincharm','tidepearl','rekindle'])},
 keeper:function*(){if(G.lastGift===G.day){yield say('KEEPER: Mornings are for walking. KIN love a good walk.');return}
@@ -232,7 +242,13 @@ badge2:function*(){yield sfxT('badge');
  yield doT(()=>{if(!G.badges.includes('CINDER'))G.badges.push('CINDER')});
  yield say(G.name+' received the CINDER BADGE!');
  yield doT(()=>addItem('cinderfang',1));yield sfxT('found');
- yield say('BRAVA: And a CINDER FANG, for your fire.','Two badges! Solvane is yours, KEEPER.','The AURELIA gate? Closed till next season, sorry.','But that legend NOCTELK still walks the three roads at night.','Go on. Chase a myth for me.')},
+ yield say('BRAVA: And a CINDER FANG, for your fire.','That makes two! But BRONTE waits north past CINDERVALE.','Their VOLT gym in STORMREACH crackles. Pack STONE moves!','And that legend NOCTELK still walks the three roads at night.')},
+badge3:function*(){yield sfxT('badge');
+ yield say('BRONTE: The SURGE BADGE is yours. Fully charged!');
+ yield doT(()=>{if(!G.badges.includes('SURGE'))G.badges.push('SURGE')});
+ yield say(G.name+' received the SURGE BADGE!');
+ yield doT(()=>addItem('stormcell',1));yield sfxT('found');
+ yield say('BRONTE: And a STORM CELL. It supercharges VOLT moves.','Three badges! You light up Solvane, KEEPER.','The AURELIA gate north is sealed... for now.','But NOCTELK still walks the three roads at night. Go chase the storm.')},
 gloamwin:function*(){yield say('VESPER: The eclipse will rise... elsewhere!');
  yield doT(()=>setF('gloamgone'));
  yield say('The GLOAM SYNDICATE scattered into the dark!')}};

@@ -88,7 +88,8 @@ irontalisman:{n:'IRON TALISMAN',pr:800,k:'held',d:'HELD: raises DEFENSE 12%.'},
 cinderfang:{n:'CINDER FANG',pr:800,k:'held',d:'HELD: EMBER moves +20%.'},
 tidepearl:{n:'TIDE PEARL',pr:800,k:'held',d:'HELD: TIDE moves +20%.'},
 leafcrest:{n:'LEAF CREST',pr:800,k:'held',d:'HELD: FLORA moves +20%.'},
+stormcell:{n:'STORM CELL',pr:800,k:'held',d:'HELD: VOLT moves +20%.'},
 coincharm:{n:'COIN CHARM',pr:1000,k:'held',d:'HELD: 1.5x prize money.'},
 alloycore:{n:'ALLOY CORE',pr:2100,k:'evo',d:'Strange ore. Evolves certain Kin.'}};
-const BAGORDER=['snare','primesnare','apexsnare','tonic','supertonic','remedy','rekindle','juneberry','bitterroot','powerband','quickquill','irontalisman','cinderfang','tidepearl','leafcrest','coincharm','alloycore'];
+const BAGORDER=['snare','primesnare','apexsnare','tonic','supertonic','remedy','rekindle','juneberry','bitterroot','powerband','quickquill','irontalisman','cinderfang','tidepearl','leafcrest','stormcell','coincharm','alloycore'];
 
